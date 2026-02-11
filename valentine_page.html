@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+      width: 650px;
+    }
+    h1 {
+      color: #363636;
+      margin-bottom: 30px;
+    }
+    .buttons {
+      height: 100px;
+      font-weight: 500;
+      width: 80%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    #yesBtn {
+      background: #FF2E51;
+      padding: 20px 0;
+      width: 100px;
+      color: white; 
+    }
+    #yesBtn:hover {
+      transform: scale(1.25);
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
+    }
+    #noBtn {
+      background: #ededed;
+      padding: 20px 0;
+      width: 100px;
+      color: #000;
+      position: absolute;
+      right: 0;
+      transition: left 0.6s ease, top 0.6s ease;
+    }
+    .result {
+      display: none;
+      margin-top: 20px;
+      font-size: 22px;
+      color: #ff4d6d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    
+    <center>
+      <img src="heart.png" alt="heart" width="180">
+      <h1>Will you be my Valentine? 💖</h1>
+      <!--<h1>Are you Sure?</h1>-->
+    <div class="buttons">
+      <div><button id="yesBtn">Yes</button></div>
+      <div><button id="noBtn">No</button></div>
+    </div>
+    <div class="result" id="result">
+      <img src="boom.gif" alt="excitement" width="300"><br>
+      Yayyy! I knew it 😍💞
+      
+    </div>
+    </center>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const card = document.querySelector(".card");
+    const yesBtn = document.getElementById("yesBtn");
+    const result = document.getElementById("result");
+    const buttons = document.querySelector(".buttons");
+
+    noBtn.addEventListener("mouseover", () => {
+      const cardRect = card.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      buttons.style.position = "unset";
+      const maxX = cardRect.width - btnRect.width;
+      const maxY = cardRect.height - btnRect.height;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      buttons.style.display = "none";
+      result.style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
